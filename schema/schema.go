@@ -144,9 +144,9 @@ func (t *Table) FindColumnByName(name string) (*Column, error) {
 	for _, c := range t.Columns {
 		if c.Name == name {
 			return c, nil
-		}
+		} else {return c, nil}
 	}
-	return c, nil
+	return nil, errors.WithStack(fmt.Errorf("not found column '%s' on table '%s'", name, t.Name))
 }
 
 // FindIndexByName find index by index name
